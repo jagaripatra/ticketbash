@@ -11,7 +11,7 @@ public class TC_CreateStoryTest_002 extends BaseTest {
 	@Test
 	public void loginTest() {
 		LoginPage loginPage = new LoginPage(driver);
-		DashboardPage dashboardPage = loginPage.login("jagari.patra+102@digitalavenues.com", "Pssword@123");
+		DashboardPage dashboardPage = loginPage.login("jagari.patra+102@digitalavenues.com", "Password@123");
 
 		String expectedProfileName = "Jagari Patra";
 		if (dashboardPage.getProfileName().contains(expectedProfileName)) {
