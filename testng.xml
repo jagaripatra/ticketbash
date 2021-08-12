@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="VisualStory Suite" parallel="classes" thread-count="2">
+
+  <listeners>
+    <listener class-name="com.visualstory.utilities.Reporting" />
+  </listeners>
+
+  <test name="Smoke Test">
+  	<parameter name="browser" value="chrome" />
+    <classes>
+      <class name="com.visualstory.testcases.TC_LoginTest_001"/>
+      <class name="com.visualstory.testcases.TC_CreateStoryTest_002" />
+    </classes>
+  </test>
+</suite>
