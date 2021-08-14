@@ -30,7 +30,7 @@ public class Reporting extends TestListenerAdapter {
 
 	@Override
 	public void onStart(ITestContext testContext) {
-		String reportPath = "C:\\VisualStoryReport\\reports\\TestRunResults_" + timeStamp + "\\report.html";
+		String reportPath = "C:\\TicketbashReport\\reports\\TestRunResults_" + timeStamp + "\\report.html";
 
 		htmlReporter = new ExtentSparkReporter(reportPath);
 		htmlReporter.config().setDocumentTitle("VisualStory Test Project");
@@ -51,16 +51,16 @@ public class Reporting extends TestListenerAdapter {
 
 	@Override
 	public void onTestSuccess(ITestResult tr) {
-		logger = extent.createTest(tr.getTestClass().getName());
-		logger.log(Status.PASS, MarkupHelper.createLabel(tr.getTestClass().getName(), ExtentColor.GREEN));
+		logger = extent.createTest(StringUtils.getClassName(tr.getTestClass().getName()));
+		logger.log(Status.PASS, MarkupHelper.createLabel(StringUtils.getClassName(tr.getTestClass().getName()), ExtentColor.GREEN));
 	}
 
 	@Override
 	public void onTestFailure(ITestResult tr) {
-		logger = extent.createTest(tr.getTestClass().getName());
-		logger.log(Status.FAIL, MarkupHelper.createLabel(tr.getTestClass().getName(), ExtentColor.RED));
+		logger = extent.createTest(StringUtils.getClassName(tr.getTestClass().getName()));
+		logger.log(Status.FAIL, MarkupHelper.createLabel(StringUtils.getClassName(tr.getTestClass().getName()), ExtentColor.RED));
 
-		String screenshotPath = "C:\\VisualStoryReport\\reports\\TestRunResults_" + timeStamp + "\\Screenshots\\"
+		String screenshotPath = "C:\\TicketbashReport\\reports\\TestRunResults_" + timeStamp + "\\Screenshots\\"
 				+ "screenshot.png";
 
 		try {
@@ -93,4 +93,5 @@ public class Reporting extends TestListenerAdapter {
 		logger = extent.createTest(tr.getClass().getName());
 		logger.log(Status.SKIP, MarkupHelper.createLabel(tr.getClass().getName(), ExtentColor.ORANGE));
 	}
+	
 }
